@@ -1,0 +1,134 @@
+
+
+*{
+    overflow-x: hidden;
+    font-family: 'Source Code Pro', monospace;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body * {
+    overflow-y: hidden;
+}
+
+.sideNav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s ease-in-out;
+    padding-top: 60px;
+}
+
+.sideNav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sideNav a:hover {
+    color: #f1f1f1;
+}
+
+.sideNav .closeBtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+.openBtn{
+    display: none;
+}
+.normalNav {
+    overflow-y: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.normalNav .links{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .normalNav a{
+        display: none;
+    }
+    .links .navLogo{
+        display: block;
+    }
+    .openBtn{
+        display: block;
+    }
+}
+
+.dot {
+    position: absolute;
+    height: 600px;
+    width: 600px;
+    top: -100px;
+    right: -100px;
+    z-index: -1;
+    background-color: #C80A00;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.color-dot {
+    height: 18px;
+    width: 18px;
+    top: -100px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.dot-red{
+    background-color: #C80A00;
+}
+.dot-black{
+    background-color: black;
+}
+.dot-white{
+    background-color: white;
+}
+.dot-gray{
+    background-color: rgb(211, 211, 211);
+}
+@media only screen and (max-width: 1400px){
+    .dot{
+        right: -200px;
+        top: -200px;
+    }
+}
+@media only screen and (max-width: 1000px){
+    .dot{
+        right: -200px;
+        top: -200px;
+    }
+}
+@media only screen and (max-width: 1000px){
+    .dot{
+        display: none;
+    }
+}
+@font-face {
+    font-family: "edosz";
+    src: url("../fonts/edosz.ttf");
+}
+.edosz{
+    font-family: edosz, sans-serif;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
