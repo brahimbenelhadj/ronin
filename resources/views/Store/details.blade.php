@@ -6,7 +6,7 @@
     <div class="mb-16 flex flex-col mt-20 md:w-10/12 md:mx-auto">
         <div class="flex flex-col md:flex-row item md:items-center">
             <img id="mainimage" data-tilt class="w-11/12 md:w-5/12 mx-auto my-auto"
-                 src="{{env('api_base')."/assets/".$product->stocks[0]->image}}" alt="">
+                 src="{{env('API_BASE')."/assets/".$product->stocks[0]->image}}" alt="">
             <div class="mx-auto text-center md:w-5/12 md:text-left">
                 <h1 class="edosz text-4xl md:mb-1">{{$product->name}}</h1>
                 <p class="text-2xl text-rouge-100" id="price"></p>
@@ -14,7 +14,10 @@
                     prix</p>
                 <div class="flex m-2 md:mt-3 md:w-9/12">
                     @forelse($product->stocks as $stock)
-                        <img class="subimage w-48" src="{{env('api_base')."/assets/".$stock->image}}" alt="">
+                    <div class="w-48 h-48">
+                        <img class="subimage object-fit" src="{{env('API_BASE')."/assets/".$stock->image}}" alt="">
+                    </div>
+                        
                     @empty
                         <h1 class="text-gray-500">Aucune image disponible</h1>
                     @endforelse
