@@ -128,5 +128,9 @@ class StoreController extends Controller
         return view("Store.cart", compact("items"));
     }
 
+    public function pay(){
+
+    }
+
 
 }
