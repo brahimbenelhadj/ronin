@@ -56,7 +56,8 @@ class Store extends Model
         $filters = $data["filters"];
         if (strlen($filters) > 0) $filters .= "&";
         $link = env("API_BASE") . '/items/' . $uri . '?' . $filters;
-        if ($method == "GET") $link .= 'access_token=' . $token;
+        $access_token_methods = array("GET","DELETE");
+        if (in_array($method,$access_token_methods)) $link .= 'access_token=' . $token;
         return $link;
     }
 

@@ -106,6 +106,18 @@ class StoreController extends Controller
         return response()->json($created);
     }
 
+    public function removeFromCart(Request $request): JsonResponse
+    {
+        $item = $request->get("item");
+        $deleted = Store::apiCall([
+           "uri"=>"cartItems/$item",
+            "token"=>env("api_token"),
+            "filters"=>"",
+        ],"DELETE");
+        return response()->json($deleted);
+
+    }
+
     public function cart(): Factory|View|Application
     {
         $items = Store::apiCall([

@@ -14,6 +14,7 @@ Route::post("/api/produits/{id}/getColors", [StoreController::class, "gestionSto
 
 
 Route::post("/api/produits/{id}/addToCart", [StoreController::class, 'addToCart'])->name("product.addToCart");
+Route::post("/api/produits/removeFromCart", [StoreController::class, 'removeFromCart'])->name("product.removeFromCart");
 
 
 Route::get("/cart", [StoreController::class, "cart"])->name("cart.view");

@@ -38,7 +38,7 @@
                                 $total += $item->quantity * $item->details->price;
                             @endphp
                         </h1>
-                        <button class="text-gray-600">
+                        <button class="text-gray-600 trash" data-item="{{$item->id}}">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                  stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -96,6 +96,25 @@
 
     </div>
 
+@endsection
+
+@section("js")
+    <script>
+        $(".trash").click(function(){
+            const item = $(this).attr("data-item")
+            $.ajax({
+                url: "{{route("product.removeFromCart")}}",
+                type: "POST",
+                data: {
+                    "item": item
+                },
+                success: function (data) {
+                    document.location.reload(true)
+                }
+
+            })
+        })
+    </script>
 @endsection
 
 

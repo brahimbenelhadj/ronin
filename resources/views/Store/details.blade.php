@@ -17,7 +17,7 @@
                     <div class="w-48 h-48">
                         <img class="subimage object-fit" src="{{env('API_BASE')."/assets/".$stock->image}}" alt="">
                     </div>
-                        
+
                     @empty
                         <h1 class="text-gray-500">Aucune image disponible</h1>
                     @endforelse
@@ -226,7 +226,8 @@
                     "color": color
                 },
                 success: function (data) {
-                    console.log(data);
+                    console.log(data)
+                    window.location.href = "{{route("products")}}"
                 }
 
             })
