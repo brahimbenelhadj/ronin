@@ -14,9 +14,9 @@
                     prix</p>
                 <div class="flex m-2 md:mt-3 md:w-9/12">
                     @forelse($product->stocks as $stock)
-                    <div class="w-48 h-48">
-                        <img class="subimage object-fit" src="{{env('API_BASE')."/assets/".$stock->image}}" alt="">
-                    </div>
+                        <div class="w-48 h-48">
+                            <img class="subimage object-fit" src="{{env('API_BASE')."/assets/".$stock->image}}" alt="">
+                        </div>
 
                     @empty
                         <h1 class="text-gray-500">Aucune image disponible</h1>
@@ -68,64 +68,56 @@
             class="flex flex-col text-center w-full p-5 mt-5 md:flex-row md:items-center md:justify-center md:w-10/12  lg:w-7/12">
             <p class="font-bold">Avis sur le produit</p>
             <div class="w-32 flex mt-5 mb-5 mx-auto justify-around">
-                <span class="color-dot dot-red "></span>
-                <span class="color-dot dot-red "></span>
-                <span class="color-dot dot-red "></span>
-                <span class="color-dot dot-red "></span>
-                <span class="color-dot dot-white"></span>
+                @for($i = 0;$i<$average;$i++)
+                    <span class="color-dot dot-red "></span>
+                @endfor
+                @for($i = 0;$i<5-$average;$i++)
+                    <span class="color-dot dot-white "></span>
+                @endfor
             </div>
-            <a href="" class="text-gray-600 underline text-sm">Rédiger un commentaire</a>
+            <button id="displayCommentSection" type="button" class="text-gray-600 underline text-sm">Rédiger un commentaire</button>
+            <div class="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-white w-full md:w-4/12 py-4 hidden" id="commentSection">
+                <span class="absolute right-2 top-2" id="closeCommentSection">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </span>
+                <p class="edosz text-xl mt-10">Votre commentaire</p>
+                <label for="stars" class="block">How many stars?</label>
+                <input id="stars" class="block p-1 bg-gray-100 rounded-md mx-auto" name="stars" type="number" min="0"
+                       max="5">
+                <label for="comment" class="block">Your comment</label>
+                <textarea name="comment" id="comment" class="block p-1 bg-gray-100 rounded-md mx-auto"></textarea>
+                <button id="addComment"
+                        class="mt-7 mb-5 cursor-pointer bg-rouge-100 px-6 py-2 text-white md:text-center font-bold ">
+                    Valider le commentaire
+                </button>
+            </div>
         </div>
         <div class="flex flex-col px-5 mt-10 w-full">
 
-            <div class="flex flex-col mb-10">
-                <div class="flex">
-                    <h1 class=" text-rouge-100 font-bold mb-1 mr-5 ">Kevin</h1>
-                    <div class="w-32 flex justify-between">
-                        <span class="color-dot dot-red "></span>
-                        <span class="color-dot dot-red "></span>
-                        <span class="color-dot dot-red "></span>
-                        <span class="color-dot dot-red "></span>
-                        <span class="color-dot dot-white"></span>
+            @forelse($reviews as $review)
+
+                <div class="flex flex-col mb-10">
+                    <div class="flex">
+                        <h1 class=" text-rouge-100 font-bold mb-1 mr-5 ">Kevin</h1>
+                        <div class="w-32 flex justify-between">
+                            @for($i = 0;$i<$review->stars;$i++)
+                                <span class="color-dot dot-red "></span>
+                            @endfor
+                            @for($i = 0;$i<5-$review->stars;$i++)
+                                <span class="color-dot dot-white "></span>
+                            @endfor
+                        </div>
                     </div>
+                    <p class="text-gray-400 text-sm  mb-2">Avis publié
+                        le {{date("d/m/Y",strtotime($review->date_created))}}</p>
+                    <p>{{$review->comment}}</p>
                 </div>
-                <p class="text-gray-400 text-sm  mb-2">Avis publié le 30 sept 2020</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias labore sequi ipsam quos, quo
-                    expedita magni natus obcaecati numquam tempora vel assumenda quibusdam veniam earum explicabo
-                    suscipit illum impedit? Nobis!</p>
-            </div>
-            <div class="flex flex-col mb-10">
-                <div class="flex">
-                    <h1 class=" text-rouge-100 font-bold mb-1 mr-5 ">Kevin</h1>
-                    <div class="w-32 flex justify-between">
-                        <span class="color-dot dot-red "></span>
-                        <span class="color-dot dot-red "></span>
-                        <span class="color-dot dot-red "></span>
-                        <span class="color-dot dot-red "></span>
-                        <span class="color-dot dot-white"></span>
-                    </div>
-                </div>
-                <p class="text-gray-400 text-sm  mb-2">Avis publié le 30 sept 2020</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias labore sequi ipsam quos, quo
-                    expedita magni natus obcaecati numquam tempora vel assumenda quibusdam veniam earum explicabo
-                    suscipit illum impedit? Nobis!</p>
-            </div>
-            <div class="flex flex-col mb-10">
-                <div class="flex">
-                    <h1 class=" text-rouge-100 font-bold mb-1 mr-5 ">Kevin</h1>
-                    <div class="w-32 flex justify-between">
-                        <span class="color-dot dot-red "></span>
-                        <span class="color-dot dot-red "></span>
-                        <span class="color-dot dot-red "></span>
-                        <span class="color-dot dot-red "></span>
-                        <span class="color-dot dot-white"></span>
-                    </div>
-                </div>
-                <p class="text-gray-400 text-sm  mb-2">Avis publié le 30 sept 2020</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias labore sequi ipsam quos, quo
-                    expedita magni natus obcaecati numquam tempora vel assumenda quibusdam veniam earum explicabo
-                    suscipit illum impedit? Nobis!</p>
-            </div>
+            @empty
+                <p class="block mb-10 text-center"> Aucun avis pour ce produit</p>
+            @endforelse
 
 
         </div>
@@ -232,6 +224,32 @@
 
             })
         })
+
+        $("#displayCommentSection").click(function (){
+            $("#commentSection").toggleClass("hidden block")
+        })
+        $("#closeCommentSection").click(function (){
+            $("#commentSection").toggleClass("hidden block")
+        })
+
+        $('#addComment').click(function (){
+            let stars = $('#stars').val()
+            let comment = $('#comment').val()
+            $.ajax({
+                url: "{{route("product.addComment",["id" => $product->id])}}",
+                type: "POST",
+                data: {
+                    "stars": stars,
+                    "comment": comment
+                },
+                success: function (data) {
+                    document.location.reload(true)
+                }
+
+            })
+        })
+
+
 
     </script>
 @endsection

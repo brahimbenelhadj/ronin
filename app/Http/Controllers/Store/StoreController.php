@@ -66,7 +66,23 @@ class StoreController extends Controller
             }
         }
 
-        return view("Store.details", compact("product", "tailles", "colors"));
+        $reviews = Store::apiCall([
+            "uri"=>"review",
+            "token"=>env('api_token'),
+            "filters"=>"fields=*,product.*&filter[product.id]=$id"
+        ]);
+
+        $totalStars = 0;
+
+        foreach ($reviews as $review) {
+            $totalStars += $review->stars;
+        }
+
+        sizeof($reviews) >0 ? $average = ($totalStars)/sizeof($reviews): $average = 0;
+
+
+
+        return view("Store.details", compact("product", "tailles", "colors","reviews","average"));
     }
 
 

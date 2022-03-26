@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\Store\CommentController;
 use App\Http\Controllers\Store\StoreController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +16,7 @@ Route::post("/api/produits/{id}/getColors", [StoreController::class, "gestionSto
 
 Route::post("/api/produits/{id}/addToCart", [StoreController::class, 'addToCart'])->name("product.addToCart");
 Route::post("/api/produits/removeFromCart", [StoreController::class, 'removeFromCart'])->name("product.removeFromCart");
+Route::post("/api/produits/{id}/addComment", [CommentController::class, 'addComment'])->name("product.addComment");
 
 
 Route::get("/cart", [StoreController::class, "cart"])->name("cart.view");
