@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/produits", [StoreController::class, 'list'])->name("products");
 
-Route::get("/produits/category/{category}", [StoreController::class, "productsByCategory"])->name("products.category");
+Route::get("/produits/category/{category}", [StoreController::class, "productsByCategory"])->name("products.category.list");
 Route::get("/produits/{id}", [StoreController::class, "productDetails"])->name("products.details");
 
 

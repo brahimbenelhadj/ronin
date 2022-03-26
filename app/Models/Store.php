@@ -40,7 +40,11 @@ class Store extends Model
         curl_setopt_array($curl, $config);
 
         $response = curl_exec($curl);
-        $datas = (json_decode($response))->data;
+        try {
+            $datas = (json_decode($response))->data;
+        } catch (\ErrorException $e) {
+            $datas = [];
+        }
         curl_close($curl);
         return $datas;
     }

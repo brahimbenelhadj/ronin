@@ -8,18 +8,7 @@
 
 
         <div class="my-16 md:mt-4 product__container min-h-screen">
-            <h1 class="edosz text-5xl text-center mb-6 md:text-7xl">PRODUITS</h1>
-            <div
-                class="flex flex-col justify-between items-center h-36 md:h-10 md:flex-row md:w-8/12 mx-auto lg:w-7/12">
-                <button type="button" data-filter="*"
-                        class="md:px-2 p-1 hover:shadow-md md:mx-0  hover:shadow-rouge-100 hover:bg-rouge-100 hover:text-white transition duration-200 text-rouge-100 border-2 border-rouge-100">
-                    Tous
-                    les produits
-                </button>
-                @foreach($categories as $category)
-                    <button type="button" data-filter=".{{slugify($category->name)}}">{{$category->name}}</button>
-                @endforeach
-            </div>
+            <h1 class="edosz text-5xl text-center mb-6 md:text-7xl">{{$categoryFound->name}}</h1>
             <div class="columns-1 mx-10 gap-10 text-center md:columns-3">
                 @forelse($products as $product)
                     <a href="{{route("products.details",["id"=>$product->id])}}"

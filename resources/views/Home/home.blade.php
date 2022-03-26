@@ -27,7 +27,7 @@
                 <div class="flex flex-col justify-center items-center mb-8 md:w-3/12">
                     <img src="{{env("API_BASE")."/assets/".$cat->image}}" alt="">
                     <p>{{$cat->name}}</p>
-                    <a href="#" class="text-rouge-100 underline">Découvrir</a>
+                    <a href="{{route("products.category.list",["category"=>$cat->id])}}" class="text-rouge-100 underline">Découvrir</a>
                 </div>
             @empty
                 <h1 class="text-black mx-auto text-center font-regular">Oups..., Aucune catégorie n'est disponible!

@@ -32,7 +32,7 @@
                     <a class="transition duration-200 hover:border-b-2 hover:border-b-rouge-100 {{Route::currentRouteName() === "home" ? "border-b-2 border-b-rouge-100" :""}} px-1"
                        href="{{route("home")}}">Accueil</a>
                     <a class="transition duration-200 hover:border-b-2 hover:border-b-rouge-100 px-1 {{Route::currentRouteName() === "products" ? "border-b-2 border-b-rouge-100" :""}}"
-                       href="{{route("products")}}#didi">Produits</a>
+                       href="{{route("products")}}">Produits</a>
                     <a class="transition duration-200 hover:border-b-2 hover:border-b-rouge-100 px-1"
                        href="{{route('home')}}#about">A propos</a>
                     <a class="transition duration-200 hover:border-b-2 hover:border-b-rouge-100 px-1"

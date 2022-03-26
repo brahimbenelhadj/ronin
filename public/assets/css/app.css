@@ -535,6 +535,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     margin-left: 2.5rem;
     margin-right: 2.5rem;
 }
+.my-24{
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+}
 .mt-auto{
     margin-top: auto;
 }
