@@ -47,44 +47,53 @@
                         </button>
                     </div>
                 </div>
-                <div class="mx-auto rounded-lg bg-black h-0.5 w-56 mt-5 mb-5"></div>
+                @if(array_search($item,$items) != (sizeof($items)-1))
+                    <div class="mx-auto rounded-lg bg-black h-0.5 w-56 mt-5 mb-5"></div>
+                @endif
             @empty
                 <p class="text-gray-500 text-center"> Votre panier est vide</p>
             @endforelse
 
-            <a href=""
-               class="mt-10 mb-5 hover:opacity-80 bg-rouge-100 py-2 mx-auto w-48 text-center font-bold text-white">Payer
-                ( {{$total}}€ )</a>
-            <a href="{{route("products")}}" class="text-sm underline  mx-auto text-gray-600">Continuer ses achats</a>
+            @if(sizeof($items) > 0)
+                <a href=""
+                   class="mt-10 mb-5 hover:opacity-80 bg-rouge-100 py-2 mx-auto w-48 text-center font-bold text-white">Payer
+                    ( {{$total}}€ )</a>
+                <a href="{{route("products")}}" class="text-sm underline  mx-auto text-gray-600">Continuer ses
+                    achats</a>
+            @endif
 
         </div>
-        <h1 class="edosz text-4xl text-center mt-48 mx-auto">CES PRODUITS QUI POURRAIENT VOUS PLAIRE</h1>
-        <div class="flex flex-col px-12  md:flex-row md:w-full">
-            <a href="">
-                <div class="flex flex-col justify-center items-center mb-8 w-full ">
-                    <img data-tilt data-tilt-reverse="true" data-tilt-scale="1.05"
-                         src="img/ddc16aa9eda531884d18d6e93b3450e8.png">
-                    <p class="text-sm">Nom du produit</p>
-                    <p class="text-rouge-100">00,00€</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="flex flex-col justify-center items-center mb-8 w-full">
-                    <img data-tilt data-t ilt-reverse="true" data-tilt-scale="1.05"
-                         src="img/ddc16aa9eda531884d18d6e93b3450e8.png">
-                    <p class="text-sm">Nom du produit</p>
-                    <p class="text-rouge-100">00,00€</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="flex flex-col justify-center items-center mb-8 w-full">
-                    <img data-tilt data-tilt-reverse="true" data-tilt-scale="1.05"
-                         src="img/ddc16aa9eda531884d18d6e93b3450e8.png">
-                    <p class="text-sm">Nom du produit</p>
-                    <p class="text-rouge-100">00,00€</p>
-                </div>
-            </a>
-        </div>
+
+        @if(sizeof($items) > 0)
+            <h1 class="edosz text-4xl text-center mt-48 mx-auto">CES PRODUITS QUI POURRAIENT VOUS PLAIRE</h1>
+            <div class="flex flex-col px-12  md:flex-row md:w-full">
+                <a href="">
+                    <div class="flex flex-col justify-center items-center mb-8 w-full ">
+                        <img data-tilt data-tilt-reverse="true" data-tilt-scale="1.05"
+                             src="img/ddc16aa9eda531884d18d6e93b3450e8.png">
+                        <p class="text-sm">Nom du produit</p>
+                        <p class="text-rouge-100">00,00€</p>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="flex flex-col justify-center items-center mb-8 w-full">
+                        <img data-tilt data-t ilt-reverse="true" data-tilt-scale="1.05"
+                             src="img/ddc16aa9eda531884d18d6e93b3450e8.png">
+                        <p class="text-sm">Nom du produit</p>
+                        <p class="text-rouge-100">00,00€</p>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="flex flex-col justify-center items-center mb-8 w-full">
+                        <img data-tilt data-tilt-reverse="true" data-tilt-scale="1.05"
+                             src="img/ddc16aa9eda531884d18d6e93b3450e8.png">
+                        <p class="text-sm">Nom du produit</p>
+                        <p class="text-rouge-100">00,00€</p>
+                    </div>
+                </a>
+            </div>
+        @endif
+
     </div>
 
 @endsection

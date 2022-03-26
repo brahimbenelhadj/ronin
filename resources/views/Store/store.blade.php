@@ -20,9 +20,9 @@
                     <button type="button" data-filter=".{{slugify($category->name)}}">{{$category->name}}</button>
                 @endforeach
             </div>
-            <div class="columns-1 mx-10 gap-10 text-center md:columns-2">
+            <div class="columns-1 mx-10 gap-10 text-center md:columns-3">
                 @forelse($products as $product)
-                    <a class="block" href="{{route("products.details",["id"=>$product->id])}}"
+                    <a href="{{route("products.details",["id"=>$product->id])}}"
                        class="block mix {{slugify($product->category->name)}}">
                         <div class="flex flex-col justify-center items-center mb-8 w-full">
                             <img data-tilt data-tilt-reverse="true" data-tilt-scale="1.05"

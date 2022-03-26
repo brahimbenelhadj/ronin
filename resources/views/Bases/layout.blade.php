@@ -9,6 +9,7 @@
     <script src="https://kit.fontawesome.com/3109a1369e.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{{asset("assets/images/logo.png")}}" type="image/x-icon">
     <title>@yield('title')</title>
 </head>
 <body class="body bg-gray-100 ">

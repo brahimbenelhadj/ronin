@@ -29,6 +29,22 @@ class StoreController extends Controller
         return view("Store.store", compact("categories", "products"));
     }
 
+    public function productsByCategory($category)
+    {
+        $categories = Store::apiCall([
+            "uri" => "category",
+            "token" => env("api_token"),
+            "filters" => ""
+        ]);
+        $products = Store::apiCall([
+            "uri" => "product",
+            "token" => env("api_token"),
+            "filters" => "fields=*,stocks.*,category.*&filter"
+        ]);
+
+        return view("Store.store", compact("categories", "products"));
+    }
+
     public function productDetails($id): Factory|View|Application
     {
         $product = Store::apiCall([
