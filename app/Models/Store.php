@@ -29,7 +29,8 @@ class Store extends Model
                 'Accept: application/json'
             )
         );
-        if ($method == "POST") {
+        $methods = array("POST","PATCH");
+        if (in_array($method,$methods)){
             $config[CURLOPT_HTTPHEADER] = array(
                 'Content-Type: application/json',
                 'Accept: application/json',

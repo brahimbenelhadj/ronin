@@ -22,7 +22,6 @@
     <x-footer></x-footer>
 </div>
 <script src="{{asset('assets/js/jquery.js')}}"></script>
-<script src="{{asset('assets/js/axios.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/vanilla-tilt.js')}}"></script>
 <script src="{{asset('assets/js/script.js')}}"></script>
 @yield("js")

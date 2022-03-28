@@ -25,7 +25,6 @@ class StoreController extends Controller
             "token" => env("api_token"),
             "filters" => "fields=*,stocks.*,category.*"
         ]);
-
         return view("Store.store", compact("categories", "products"));
     }
 
@@ -119,6 +118,19 @@ class StoreController extends Controller
                 "details" => $stock->id
             ]
         ], "POST");
+        $total = $stock->total-1;
+        if($total < 0){
+            $total = 0;
+        }
+
+        Store::apiCall([
+            "uri"=>"stocks/$stock->id",
+            "token"=>env("api_token"),
+            "filters"=>"",
+            "data"=>[
+                "total"=>$total
+            ]
+        ],'PATCH');
         return response()->json($created);
     }
 
